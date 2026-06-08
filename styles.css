@@ -101,6 +101,42 @@ img {
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
+/* 1. Mantenemos tus estilos base intactos */
+.course-card {
+  display: grid;
+  min-height: 176px;
+  align-content: space-between;
+  gap: 18px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.8);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+/* 2. NUEVA REGLA: Forzamos a que abarque todo el ancho y reducimos su altura */
+.course-card.card-larga {
+  /* Hace que ocupe desde la columna 1 hasta la 5 (las 4 columnas completas) */
+  grid-column: 1 / -1; 
+  
+  /* Reducimos la altura a la mitad de las tarjetas normales */
+  min-height: 88px;    /* 176px / 2 = 88px */
+  
+  /* Cambiamos el diseño interno a Flexbox para que el icono y el texto estén alineados horizontalmente */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+/* Ajuste opcional para que los textos dentro de Foro no se encimen */
+.course-card.card-larga div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .course-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 18px 36px rgba(18, 31, 51, 0.18);
